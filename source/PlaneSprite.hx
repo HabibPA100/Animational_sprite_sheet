@@ -8,7 +8,7 @@ class PlaneSprite extends FlxSprite {
         super(x, y);
 
         // প্লেন ইমেজ লোড
-        super.loadGraphic("assets/images/plane_animation.png", true, 200, 200); // true মানে এটা animated
+		super.loadGraphic("assets/images/plane_anim.png", true, 200, 200); // true মানে এটা animated
         animation.add("fly", [0, 1, 2, 3, 4, 5, 6, 7], 10, true); // ফ্রেম 0-3, প্রতি সেকেন্ডে 10 বার
         animation.play("fly");
         origin.set(width / 2, height / 2);
