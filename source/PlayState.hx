@@ -19,6 +19,8 @@ class PlayState extends FlxState
 	override public function create()
 	{
 		super.create();
+		// Bg music
+		FlxG.sound.playMusic(AssetPaths.bg_music__mp3, 0.5, true); // volume 1.0, loop = true
 
 		// ৩টা ব্যাকগ্রাউন্ড তৈরি করো
 		var bg1 = new FlxSprite(0, 0, AssetPaths.backgroundOne__jpg);

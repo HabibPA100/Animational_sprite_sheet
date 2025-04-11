@@ -107,13 +107,38 @@ class PlaneSprite extends FlxSprite
 			bullets.add(bullet3);
 		}
 
-		// শত্রু ধ্বংস ও বিস্ফোরণ
-		FlxG.overlap(this, enemies, function(player:FlxObject, enemy:FlxObject)
+		FlxG.overlap(this, enemies, function(plane:FlxObject, enemy:FlxObject)
+		{
+			// একবারই চালানোর জন্য ফ্ল্যাগ ব্যবহার করো
+
+			// Plane, Enemy ধ্বংস
+			plane.kill();
+			enemy.kill();
+
+			// Explosion sound
+			FlxG.sound.music.pause();
+			FlxG.sound.play(AssetPaths.mainPlaneDestroy__mp3);
+
+			// Explosion animation দেখানো (চাইলে particle effect)
+			var boom = new FlxSprite(plane.x, plane.y);
+			boom.loadGraphic("assets/images/mainPlaneDestroy.png", true, 200, 100);
+			boom.animation.add("explode", [
+				1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
+			], 10, false);
+			boom.animation.play("explode");
+			boom.origin.set(boom.width / 2, boom.height / 2);
+			boom.scale.set(0.5, 0.5);
+			boom.updateHitbox();
+			FlxG.state.add(boom);
+
+			// একটু সময় দিয়ে তারপর গেম ওভার স্ক্রিন দেখাও
+			FlxG.camera.fade(0xff000000, 2, false, function()
 			{
-				trace("Player collided with enemy!");
 				FlxG.switchState(new GameOverState());
 			});
+		});
 			
+
 		// শত্রু ধ্বংস ও বিস্ফোরণ
 		FlxG.overlap(bullets, enemies, function(bullet:FlxObject, enemy:FlxObject)
 		{
