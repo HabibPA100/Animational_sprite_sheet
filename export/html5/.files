@@ -1,5 +1,11 @@
 export/html5/bin/assets/data/data-goes-here.txt
 export/html5/bin/assets/images/background.jpg
+export/html5/bin/assets/images/backgroundOne.jpg
+export/html5/bin/assets/images/backgroundThree.jpg
+export/html5/bin/assets/images/backgroundTwo.jpg
+export/html5/bin/assets/images/bust.png
+export/html5/bin/assets/images/Enemy.png
+export/html5/bin/assets/images/EnemyPlane.png
 export/html5/bin/assets/images/images-go-here.txt
 export/html5/bin/assets/images/plane_anim.png
 export/html5/bin/assets/images/plane_animation.png

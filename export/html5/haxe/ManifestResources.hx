@@ -75,7 +75,7 @@ import sys.FileSystem;
 
 		var data, manifest, library, bundle;
 
-		data = '{"name":null,"assets":"aoy4:pathy34:assets%2Fdata%2Fdata-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y32:assets%2Fimages%2Fbackground.jpgR2i364788R3y5:IMAGER5R7R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R9R6tgoR0y32:assets%2Fimages%2Fplane_anim.pngR2i584116R3R8R5R10R6tgoR0y37:assets%2Fimages%2Fplane_animation.pngR2i316017R3R8R5R11R6tgoR2i1048292R3y5:SOUNDR5y26:assets%2Fmusic%2Fboomb.wavy9:pathGroupaR13hR6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R15R6tgoR2i1048292R3R12R5y27:assets%2Fsounds%2Fboomb.wavR14aR16hR6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R17R6tgoR2i8220R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3R14aR19y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R18R5y28:flixel%2Fsounds%2Fflixel.mp3R14aR21y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i6840R3R12R5R20R14aR19R20hgoR2i33629R3R12R5R22R14aR21R22hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R23R24y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i222R3R8R5R29R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i484R3R8R5R30R6tgh","rootPath":null,"version":2,"libraryArgs":[],"libraryType":null}';
+		data = '{"name":null,"assets":"aoy4:pathy34:assets%2Fdata%2Fdata-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y32:assets%2Fimages%2Fbackground.jpgR2i364788R3y5:IMAGER5R7R6tgoR0y35:assets%2Fimages%2FbackgroundOne.jpgR2i2284541R3R8R5R9R6tgoR0y37:assets%2Fimages%2FbackgroundThree.jpgR2i1326879R3R8R5R10R6tgoR0y35:assets%2Fimages%2FbackgroundTwo.jpgR2i2531270R3R8R5R11R6tgoR0y26:assets%2Fimages%2Fbust.pngR2i51037R3R8R5R12R6tgoR0y27:assets%2Fimages%2FEnemy.pngR2i411548R3R8R5R13R6tgoR0y32:assets%2Fimages%2FEnemyPlane.pngR2i84431R3R8R5R14R6tgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R15R6tgoR0y32:assets%2Fimages%2Fplane_anim.pngR2i584116R3R8R5R16R6tgoR0y37:assets%2Fimages%2Fplane_animation.pngR2i316017R3R8R5R17R6tgoR2i1048292R3y5:SOUNDR5y26:assets%2Fmusic%2Fboomb.wavy9:pathGroupaR19hR6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R21R6tgoR2i1048292R3R18R5y27:assets%2Fsounds%2Fboomb.wavR20aR22hR6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R23R6tgoR2i8220R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3R20aR25y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R24R5y28:flixel%2Fsounds%2Fflixel.mp3R20aR27y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i6840R3R18R5R26R20aR25R26hgoR2i33629R3R18R5R28R20aR27R28hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R29R30y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i222R3R8R5R35R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i484R3R8R5R36R6tgh","rootPath":null,"version":2,"libraryArgs":[],"libraryType":null}';
 		manifest = AssetManifest.parse (data, rootPath);
 		library = AssetLibrary.fromManifest (manifest);
 		Assets.registerLibrary ("default", library);
@@ -96,6 +96,12 @@ import sys.FileSystem;
 
 @:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_data_data_goes_here_txt extends null { }
 @:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_background_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_backgroundone_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_backgroundthree_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_backgroundtwo_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_bust_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_enemy_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_enemyplane_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_images_go_here_txt extends null { }
 @:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_plane_anim_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind @:noCompletion #if display private #end class __ASSET__assets_images_plane_animation_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -118,6 +124,12 @@ import sys.FileSystem;
 
 @:keep @:file("assets/data/data-goes-here.txt") @:noCompletion #if display private #end class __ASSET__assets_data_data_goes_here_txt extends haxe.io.Bytes {}
 @:keep @:image("assets/images/background.jpg") @:noCompletion #if display private #end class __ASSET__assets_images_background_jpg extends lime.graphics.Image {}
+@:keep @:image("assets/images/backgroundOne.jpg") @:noCompletion #if display private #end class __ASSET__assets_images_backgroundone_jpg extends lime.graphics.Image {}
+@:keep @:image("assets/images/backgroundThree.jpg") @:noCompletion #if display private #end class __ASSET__assets_images_backgroundthree_jpg extends lime.graphics.Image {}
+@:keep @:image("assets/images/backgroundTwo.jpg") @:noCompletion #if display private #end class __ASSET__assets_images_backgroundtwo_jpg extends lime.graphics.Image {}
+@:keep @:image("assets/images/bust.png") @:noCompletion #if display private #end class __ASSET__assets_images_bust_png extends lime.graphics.Image {}
+@:keep @:image("assets/images/Enemy.png") @:noCompletion #if display private #end class __ASSET__assets_images_enemy_png extends lime.graphics.Image {}
+@:keep @:image("assets/images/EnemyPlane.png") @:noCompletion #if display private #end class __ASSET__assets_images_enemyplane_png extends lime.graphics.Image {}
 @:keep @:file("assets/images/images-go-here.txt") @:noCompletion #if display private #end class __ASSET__assets_images_images_go_here_txt extends haxe.io.Bytes {}
 @:keep @:image("assets/images/plane_anim.png") @:noCompletion #if display private #end class __ASSET__assets_images_plane_anim_png extends lime.graphics.Image {}
 @:keep @:image("assets/images/plane_animation.png") @:noCompletion #if display private #end class __ASSET__assets_images_plane_animation_png extends lime.graphics.Image {}
