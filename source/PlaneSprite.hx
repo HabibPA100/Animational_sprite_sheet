@@ -6,13 +6,14 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
+import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
-
 class PlaneSprite extends FlxSprite
 {
 	public var bullets:FlxGroup;
 	var enemies:FlxGroup;
+	var planeSound:FlxSound;
 	public var scoreRef:()->Void;
 
 	public function new(x:Float, y:Float)
@@ -28,6 +29,10 @@ class PlaneSprite extends FlxSprite
 		updateHitbox();
 		this.x = (FlxG.width / 2) - (width / 2);
 		this.y = (FlxG.height / 2) - (height / 2);
+		// Plane sound
+		planeSound = FlxG.sound.load(AssetPaths.vulcanPlane__mp3);
+		planeSound.looped = true;
+		planeSound.play();
 
 		// গুলির গ্রুপ
 		bullets = new FlxGroup();
@@ -117,14 +122,13 @@ class PlaneSprite extends FlxSprite
 
 			// Explosion sound
 			FlxG.sound.music.pause();
+			planeSound.stop();
 			FlxG.sound.play(AssetPaths.mainPlaneDestroy__mp3);
 
 			// Explosion animation দেখানো (চাইলে particle effect)
 			var boom = new FlxSprite(plane.x, plane.y);
-			boom.loadGraphic("assets/images/mainPlaneDestroy.png", true, 200, 100);
-			boom.animation.add("explode", [
-				1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
-			], 10, false);
+			boom.loadGraphic("assets/images/MainPlaneBust.png", true, 300, 300);
+			boom.animation.add("explode", [0, 1, 2, 3, 4, 5, 6, 7], 16, true);
 			boom.animation.play("explode");
 			boom.origin.set(boom.width / 2, boom.height / 2);
 			boom.scale.set(0.5, 0.5);
