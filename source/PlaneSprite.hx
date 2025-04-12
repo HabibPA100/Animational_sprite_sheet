@@ -22,7 +22,9 @@ class PlaneSprite extends FlxSprite
 
 		// প্লেন ইমেজ লোড
 		loadGraphic("assets/images/plane_anim.png", true, 200, 200); // true মানে এটা animated
-		animation.add("fly", [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
+		animation.add("fly", [0, 1, 2, 3], 12, true);
+		animation.add("flyLeft", [4, 5, 6, 7], 12, true);
+		animation.add("flyRight", [8, 9, 10, 11], 12, true);
 		animation.play("fly");
 		origin.set(width / 2, height / 2);
 		scale.set(0.5, 0.5);
@@ -53,26 +55,47 @@ class PlaneSprite extends FlxSprite
 	{
 		super.update(elapsed);
 
-		// নিয়ন্ত্রণ
-		if (FlxG.keys.pressed.LEFT)
+		// কীবোর্ড ইনপুট সংগ্রহ
+		var leftPressed = FlxG.keys.pressed.LEFT;
+		var rightPressed = FlxG.keys.pressed.RIGHT;
+		if (leftPressed)
 		{
-			if (angle > -45) angle -= 1;
+			animation.play("flyLeft");
+			if (angle > -45)
+				angle -= 1;
 		}
-		else if (angle < 0)
+		else if (rightPressed)
 		{
-			angle += 1;
-			if (angle > 0) angle = 0;
+			animation.play("flyRight");
+			if (angle < 45)
+				angle += 1;
+		}
+		else
+		{
+			if (angle > 0)
+			{
+				angle -= 1;
+				if (angle <= 0)
+				{
+					angle = 0;
+					animation.play("fly");
+				}
+			}
+			else if (angle < 0)
+			{
+				angle += 1;
+				if (angle >= 0)
+				{
+					angle = 0;
+					animation.play("fly");
+				}
+			}
+			else
+			{
+				animation.play("fly");
+			}
 		}
 
-		if (FlxG.keys.pressed.RIGHT)
-		{
-			if (angle < 45) angle += 1;
-		}
-		else if (angle > 0)
-		{
-			angle -= 1;
-			if (angle < 0) angle = 0;
-		}
 
 		if (FlxG.keys.pressed.A) this.x -= 10;
 		if (FlxG.keys.pressed.D) this.x += 10;
@@ -80,7 +103,7 @@ class PlaneSprite extends FlxSprite
 		else if (FlxG.keys.pressed.DOWN) velocity.y = 100;
 		else velocity.y = 0;
 
-		if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.N)
 		{
 			this.x = (FlxG.width / 2) - width / 2;
 			this.y = (FlxG.height / 2) - height / 2;
@@ -91,7 +114,7 @@ class PlaneSprite extends FlxSprite
 		else velocity.x = 0;
 
 		// গুলি চালানো
-		if (FlxG.keys.pressed.G)
+		if (FlxG.keys.pressed.SPACE)
 		{
 			var rad = (angle - 90) * Math.PI / 180;
 			var offset = 50;
@@ -114,14 +137,13 @@ class PlaneSprite extends FlxSprite
 
 		FlxG.overlap(this, enemies, function(plane:FlxObject, enemy:FlxObject)
 		{
-			// একবারই চালানোর জন্য ফ্ল্যাগ ব্যবহার করো
 
 			// Plane, Enemy ধ্বংস
 			plane.kill();
 			enemy.kill();
 
 			// Explosion sound
-			FlxG.sound.music.pause();
+			FlxG.sound.music.stop();
 			planeSound.stop();
 			FlxG.sound.play(AssetPaths.mainPlaneDestroy__mp3);
 
